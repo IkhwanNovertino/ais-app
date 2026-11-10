@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AIS-APP
+
+Sistem Informasi Akademik.
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Bun
+- PostgreSQL
+- Prisma ORM 7
+- Better Auth
+- Zod
+- Tailwind CSS 4
+- shadcn/ui with Base UI
+- Vitest
+- Playwright
+
+## Prerequisites
+
+- Bun
+- PostgreSQL
+- Git
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone Repository
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 2. Install Dependencies
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+bun install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Environment Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Salin .env.example menjadi .env.
 
-## Learn More
+Isi konfigurasi database dan autentikasi.
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Generate Prisma Client
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+bun run db:generate
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 5. Run Database Migration
 
-## Deploy on Vercel
+bun run db:migrate
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 6. Run Development Server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+bun run dev
+
+## Available Scripts
+
+Jelaskan seluruh script dari package.json.
+
+## Project Structure
+
+Jelaskan struktur src, prisma, e2e, dan konfigurasi utama.
+
+## Authentication
+
+Jelaskan penggunaan Better Auth.
+
+## Database
+
+Jelaskan penggunaan Prisma dan PostgreSQL.
+
+## Development Guidelines
+
+Jelaskan aturan pengembangan dan konvensi kode.
+
+## Testing
+
+Jelaskan cara menjalankan unit test dan E2E test.
+
+## Architecture
+
+Bagian ini akan dilengkapi setelah tahap
+Menentukan Architecture Pattern.
