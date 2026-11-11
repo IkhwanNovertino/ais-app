@@ -4,12 +4,83 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Design system SIMAK — Sistem Informasi Akademik.
+ *
+ * Palet inti (diturunkan dari spesifikasi desain):
+ *   primary      #1C4094  (aksi utama, active state)
+ *   secondary    #E09F3E  (aksi sekunder, status menunggu)
+ *   info         #105666, success #839958, destructive #9E2A2B
+ *   foreground   #0F0F0F, background #F5EFE6 (ivory hangat), card putih
+ *
+ * Semua warna dalam oklch. Mode gelap via class `.dark` pada <html>
+ * (toggle di top bar, preferensi diingat selama sesi demo).
+ *
+ * Menambah warna semantik baru:
+ * 1. Definisikan variabelnya di :root dan .dark
+ * 2. Daftarkan di @theme inline sebagai --color-<nama>: var(--<nama>)
+ */
+
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-heading);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary-soft: var(--secondary-soft);
+  --color-info-soft: var(--info-soft);
+  --color-success-soft: var(--success-soft);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-primary-text: var(--primary-text);
+  --color-success-text: var(--success-text);
+  --color-warning-text: var(--warning-text);
+  --color-info-text: var(--info-text);
+  --color-destructive-text: var(--destructive-text);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* --color-background: var(--background);
+  --color-foreground: var(--foreground);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -45,10 +116,135 @@
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-4xl: calc(var(--radius) * 2.6); */
 }
 
 :root {
+  --radius: 0.75rem;
+
+  /* Inti */
+  --background: oklch(0.954 0.014 78.3); /* #F5EFE6 ivory hangat */
+  --foreground: oklch(0.168 0 89.9); /* #0F0F0F */
+  --card: oklch(1 0 89.9); /* putih hangat */
+  --card-foreground: oklch(0.168 0 89.9);
+  --popover: oklch(1 0 89.9);
+  --popover-foreground: oklch(0.168 0 89.9);
+
+  /* Aksi utama #1C4094 */
+  --primary: oklch(0.4 0.145 263.6);
+  --primary-foreground: oklch(0.985 0.005 265);
+  /* Aksi sekunder / menunggu #E09F3E */
+  --secondary: oklch(0.749 0.134 73.5);
+  --secondary-foreground: oklch(0.2 0.05 70);
+  /* Info #105666 */
+  --info: oklch(0.42 0.07 217.5);
+  --info-foreground: oklch(0.985 0.005 265);
+  /* Sukses #839958 */
+  --success: oklch(0.65 0.093 124.2);
+  --success-foreground: oklch(0.2 0.04 120);
+  /* Bahaya #9E2A2B */
+  --destructive: oklch(0.468 0.152 24.9);
+  --destructive-foreground: oklch(0.985 0.005 265);
+
+  /* Surface & teks sekunder */
+  --muted: oklch(0.922 0.021 79.1);
+  --muted-foreground: oklch(0.501 0.021 72.9);
+  --accent: oklch(0.916 0.027 269.7); /* soft primary */
+  --accent-foreground: oklch(0.349 0.125 263.7); /* primary hover */
+
+  /* Status soft tint (badge/latar status, selalu berpasangan warna teks status) */
+  --primary-soft: oklch(0.916 0.027 269.7);
+  --secondary-soft: oklch(0.934 0.037 79.1);
+  --info-soft: oklch(0.907 0.019 213.4);
+  --success-soft: oklch(0.925 0.025 119.5);
+  --destructive-soft: oklch(0.904 0.026 17.6);
+
+  /* Warna teks status (kontras AA di atas soft tint masing-masing) */
+  --primary-text: oklch(0.349 0.125 263.7);
+  --success-text: oklch(0.433 0.073 126.8);
+  --warning-text: oklch(0.511 0.102 71.4);
+  --info-text: oklch(0.42 0.07 217.5);
+  --destructive-text: oklch(0.468 0.152 24.9);
+
+  --border: oklch(0.877 0.027 80.2);
+  --input: oklch(0.877 0.027 80.2);
+  --ring: oklch(0.4 0.145 263.6);
+
+  --chart-1: oklch(0.4 0.145 263.6);
+  --chart-2: oklch(0.749 0.134 73.5);
+  --chart-3: oklch(0.42 0.07 217.5);
+  --chart-4: oklch(0.65 0.093 124.2);
+  --chart-5: oklch(0.468 0.152 24.9);
+
+  /* Sidebar: gelap navy kampus, kontras dengan konten ivory */
+  --sidebar: oklch(0.245 0.06 263.8);
+  --sidebar-foreground: oklch(0.939 0.015 80.7);
+  --sidebar-primary: oklch(0.916 0.027 269.7);
+  --sidebar-primary-foreground: oklch(0.349 0.125 263.7);
+  --sidebar-accent: oklch(0.32 0.07 263.6);
+  --sidebar-accent-foreground: oklch(0.939 0.015 80.7);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.916 0.027 269.7);
+}
+
+.dark {
+  --background: oklch(0.2 0.019 266);
+  --foreground: oklch(0.939 0.015 80.7);
+  --card: oklch(0.253 0.028 266.4);
+  --card-foreground: oklch(0.939 0.015 80.7);
+  --popover: oklch(0.253 0.028 266.4);
+  --popover-foreground: oklch(0.939 0.015 80.7);
+
+  /* Primary diterangkan agar kontras AA di latar gelap */
+  --primary: oklch(0.617 0.135 263.8);
+  --primary-foreground: oklch(0.13 0.04 264);
+  --secondary: oklch(0.749 0.134 73.5);
+  --secondary-foreground: oklch(0.2 0.05 70);
+  --info: oklch(0.62 0.075 217.5);
+  --info-foreground: oklch(0.13 0.04 264);
+  --success: oklch(0.717 0.096 124.2);
+  --success-foreground: oklch(0.13 0.04 120);
+  --destructive: oklch(0.598 0.163 24.9);
+  --destructive-foreground: oklch(0.985 0.005 265);
+
+  --muted: oklch(0.383 0.035 265);
+  --muted-foreground: oklch(0.689 0.021 80.1);
+  --accent: oklch(0.32 0.07 263.6);
+  --accent-foreground: oklch(0.939 0.015 80.7);
+
+  --primary-soft: oklch(0.32 0.07 263.6);
+  --secondary-soft: oklch(0.35 0.055 75);
+  --info-soft: oklch(0.32 0.045 218);
+  --success-soft: oklch(0.32 0.045 122);
+  --destructive-soft: oklch(0.32 0.06 20);
+
+  --primary-text: oklch(0.783 0.079 268.5);
+  --success-text: oklch(0.82 0.086 123.5);
+  --warning-text: oklch(0.808 0.111 77.5);
+  --info-text: oklch(0.762 0.061 216.6);
+  --destructive-text: oklch(0.723 0.106 20);
+
+  --border: oklch(0.32 0.029 262.8);
+  --input: oklch(0.34 0.029 262.8);
+  --ring: oklch(0.617 0.135 263.8);
+
+  --chart-1: oklch(0.617 0.135 263.8);
+  --chart-2: oklch(0.749 0.134 73.5);
+  --chart-3: oklch(0.62 0.075 217.5);
+  --chart-4: oklch(0.717 0.096 124.2);
+  --chart-5: oklch(0.598 0.163 24.9);
+
+  --sidebar: oklch(0.171 0.018 264);
+  --sidebar-foreground: oklch(0.939 0.015 80.7);
+  --sidebar-primary: oklch(0.617 0.135 263.8);
+  --sidebar-primary-foreground: oklch(0.13 0.04 264);
+  --sidebar-accent: oklch(0.28 0.05 264);
+  --sidebar-accent-foreground: oklch(0.939 0.015 80.7);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.617 0.135 263.8);
+}
+
+/* :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.147 0.004 49.3);
   --card: oklch(1 0 0);
@@ -81,9 +277,9 @@
   --sidebar-accent-foreground: oklch(0.214 0.009 43.1);
   --sidebar-border: oklch(0.922 0.005 34.3);
   --sidebar-ring: oklch(0.714 0.014 41.2);
-}
+} */
 
-.dark {
+/* .dark {
   --background: oklch(0.147 0.004 49.3);
   --foreground: oklch(0.986 0.002 67.8);
   --card: oklch(0.214 0.009 43.1);
@@ -115,7 +311,7 @@
   --sidebar-accent-foreground: oklch(0.986 0.002 67.8);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.547 0.021 43.1);
-}
+} */
 
 @layer base {
   * {
