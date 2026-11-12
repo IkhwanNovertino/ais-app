@@ -1,5 +1,5 @@
-import { AppSidebar } from "@/components/component/app-sidebar";
-import { SignOutButton } from "@/components/component/sign-out-button";
+import { AppSidebar } from "@/components/fragment/app-sidebar";
+import { SignOutButton } from "@/components/fragment/sign-out-button";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
